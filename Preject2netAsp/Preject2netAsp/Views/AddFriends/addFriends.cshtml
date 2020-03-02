@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Friends";
+}
+@model Preject2netAsp.Models.Users
+<h2>Music</h2>
+<form asp-action="AddFriends" method="post">
+
+    <label for="email">Enter your Email: </label>
+    <input type="email" name="Names" id="email" required>
+
+    <input type="submit" value="SearchMusic">
+
+</form>
+
+<br />
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th> Id </th>
+        <th>First Name </th>
+        <th>Last Name </th>
+        <th>Email</th>
+        <th>Creation</th>
+        <th>Add Music</th>
+        
+    </tr>
+    @if ((bool)ViewData["isFirst"] != true)
+    {
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.FirstName</td>
+        <td>@Model.LastName</td>
+        <td>@Model.Email</td>
+        <td>@Model.Creation</td>
+       <td><a asp-area="" asp-controller="AddFriends" asp-action="Add" asp-route-Email="@Model.Email">add</a></td> 
+         
+    </tr>
+
+    }
+</table>
+
+<div>
+    <a asp-area="" asp-controller="DisplayAllFriends" asp-action="DisplayAllFriends" >Playlists all Music Add</a>
+
+</div>
+

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model Preject2netAsp.Models.Name
+
+<link rel="stylesheet" href="~/css/dark-higt.css" />
+
+
+<div class="toggle-container">
+    <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+</div>
+
+<link href="~/css/myStyle.css" rel="stylesheet" />
+<div id="login">
+    <div id="search">
+        <form asp-action="User" method="post">
+
+            <input type="text" name="Names" placeholder="Search AudioStreaming..." />
+            <input type="submit" value="search">
+        </form>
+    </div>
+
+
+    <a asp-area="" asp-controller="AddFriends" asp-action="AddFriends">
+
+        <div class="element">
+           Ajouter Music / playlist
+            <img src="~/images/iconFriends.png" />
+
+        </div>
+    </a>
+    <a asp-area="" asp-controller="User" asp-action="DisplayMostListenedMusics">
+
+        <div class="element">
+            Jouer Musics
+
+            <img src="~/images/logo.jpg" />
+        </div>
+    </a>
+
+
+    @if ((string)ViewData["role"] == "admin")
+    {
+
+        <a asp-area="" asp-controller="Admin" asp-action="Admin">
+            <div class="element">
+                Administractor
+                <img src="~/images/admin.png" />
+            </div>
+        </a>
+
+    }
+
+</div>
+
+<script src="~/js/dark-higth.js" asp-append-version="true"></script>

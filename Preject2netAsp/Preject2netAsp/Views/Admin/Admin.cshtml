@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h2>Admin</h2>
+@model IEnumerable<Preject2netAsp.Models.Users>
+<h2>Display all Users </h2>
+<div><b>Display All User </b><br /></div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th> Id </th>
+        <th>First Name </th>
+        <th>Last Name </th>
+        <th>Email</th>
+        <th>Creation</th>
+        <th>Role</th>
+        <th>Delete</th>
+        <th>promote other admin</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+    <tr>
+        <td>@user.Id</td>
+        <td>@user.FirstName</td>
+        <td>@user.LastName</td>
+        <td>@user.Email</td>
+        <td>@user.Creation</td>
+        <td>@user.Role</td>
+
+        @if (user.Role == "User")
+        {
+         
+            <td><a asp-area="" asp-controller="Admin" asp-action="DeleteUser" asp-route-Email="@user.Email">Delete</a></td>
+
+        }
+        @if (user.Role == "User")
+        {
+            <td><a asp-area="" asp-controller="Admin" asp-action="Promovoir" asp-route-Email="@user.Email">Promovoir admin</a></td>
+
+
+        }
+
+
+    </tr>
+    }
+
+</table>
+

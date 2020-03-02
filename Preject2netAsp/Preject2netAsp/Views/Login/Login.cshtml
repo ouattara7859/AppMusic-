@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+<link href="~/css/MystyleLogin.css" rel="stylesheet" />
+
+<script src="~/js/loginjs.js"></script>
+<link href="~/css/styles.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/dark-higt.css" />
+
+
+<div class="toggle-container">
+    <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+</div>
+
+<div class="login-page" id="login">
+    <div class="form">
+        <form asp-action="Login" method="post" class="login-form">
+            <h3>Bienvenue sur AppMusic </h3>
+            <img src="~/images/login.jpg"/>
+
+            <input type="email" name="Email" id="Email" placeholder="Enter your Email" required>
+
+            <button type="submit">login</button>
+
+            <p class="message">Not registered? <a href="/Register/Register">Create an account</a></p>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/dark-higth.js" asp-append-version="true"></script>
+
+
+

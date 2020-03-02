@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "DisplayAllFriends";
+}
+@model  IEnumerable<Preject2netAsp.Models.Friends>
+
+<div><b>Display All Musics </b><br /></div>
+<br />
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th> Id </th>
+        <th>First Name </th>
+        <th>Last Name </th>
+        <th>Email</th>
+        <th>Delete Music</th>
+        <th>DetailsPlayList</th>
+
+    </tr>
+    @foreach (var friend in Model)
+    {
+        <tr>
+            <td>@friend.Id</td>
+            <td>@friend.FirstName</td>
+            <td>@friend.LastName</td>
+            <td>@friend.Email</td>
+           
+            <td><a asp-area="" asp-controller="DisplayAllFriends" asp-action="Delete" asp-route-Email="@friend.Email">Delete</a></td>
+            <td><a asp-area="" asp-controller="DisplayAllFriends" asp-action="DetailsPlayList" asp-route-Email="@friend.Email">Details</a></td>
+
+        </tr>
+    }
+</table>

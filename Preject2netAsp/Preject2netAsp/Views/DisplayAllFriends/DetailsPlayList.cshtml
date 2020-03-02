@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "DetailsPlayList";
+}
+@model IEnumerable<Preject2netAsp.Models.PlayListModel>
+<h2>DetailsPlayList</h2>
+@if (Model.Count() != 0)
+{
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th> titleAudio </th>
+            <th>AudioStream</th>
+            <th>Email</th>
+
+        </tr>
+        @foreach (var playList in Model)
+        {
+            <tr>
+                <td>@playList.titleAudio</td>
+                <td>
+                    <audio controls="" name="media">
+                        <source src=@playList.AudioStream type="audio/mpeg">
+                    </audio>
+                </td>
+                <td>@playList.Email</td>
+
+
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p style="color:red">
+        the user does not have a play list
+    </p>
+    
+}
+

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "User";
+}
+
+@model IEnumerable<Preject2netAsp.Models.Tracks>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="~/css/myStyle.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div><b>Display All Tracks in api </b><br /></div>
+    @if (Model.Count() != 0)
+    {
+        <table class="table table-bordered table-responsive table-hover">
+            <tr>
+                <th> Title songs</th>
+                <th> Audio Stream and Download</th>
+                <th> add to Play List</th>
+
+            </tr>
+            @foreach (var piste in Model)
+            {
+
+
+                <tr>
+                    <td>@piste.Name</td>
+                    <td>
+                        <audio controls="" name="media">
+                            <source src=@piste.Audio type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td>
+                        @{
+                            string infoStreaming = piste.Name + piste.Audio;
+                        }
+                        <form asp-action="AddPlayList" method="post">
+
+                            <input type="submit" name="" value="add to playList" />
+                            <input type="hidden" name="Name" value="@piste.Name" />
+                            <input type="hidden" name="Audio" value="@piste.Audio" />
+
+                        </form>
+                    </td>
+                </tr>
+
+
+            }
+        </table>
+    }
+
+    else{ 
+        <p style="color:red">artist not found </p>
+        <p >test with this name <strong style="color:blue">"we are fm"</strong> </p>
+    }
+
+
+
+
+</body>
+</html>
+

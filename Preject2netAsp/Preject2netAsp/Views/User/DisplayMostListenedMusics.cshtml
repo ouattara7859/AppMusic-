@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Wavesurfer";
+}
+@model IEnumerable<Preject2netAsp.Models.TracksTops>
+
+@{
+    ViewData["Title"] = "Wavesurfer";
+}
+
+@{
+    var serializedJson = Json.Serialize(@Model.Select(m => m.Audio));
+}
+
+<link rel="stylesheet" href="~/css/bootstrap.css" />
+<h2>
+    
+</h2>
+
+
+
+<script>
+    var audios = @serializedJson;
+</script>
+
+<div id="waveform"></div>
+
+<div id="btn">
+
+    <button onclick="previous()"><< Previous</button>
+    <button onclick="togglePlay()">Play/Pause</button>
+    <button onclick="next()">Next >></button>
+    <button onclick="toggleMute()">Mute/Unmoute</button>
+
+</div>
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th> titleAudio </th>
+        <th>Artist Name</th>
+        <th>Album Name</th>
+
+    </tr>
+    @foreach (var tracks in Model)
+    {
+        <tr>
+            <td>@tracks.Name</td>
+            <td>@tracks.Artist_name</td>
+            <td>@tracks.Album_name</td>
+        </tr>
+    }
+</table>
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script>
+    var audio = 0;
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform'
+    });
+    function lancerwaveform(audio) {
+        console.log(audio)
+        wavesurfer.load(audios[audio]);
+    }
+    wavesurfer.on('ready', function () {
+        wavesurfer.play();
+    });
+    lancerwaveform(audio);
+    function togglePlay() {
+        wavesurfer.playPause();
+    }
+    function next() {
+        audio++;
+        if (audio >= audios.length) {
+            audio = 0;
+        }
+        lancerwaveform(audio);
+    }
+    function previous() {
+        audio--;
+        if (audio < 0) {
+            audio = audios.length - 1;
+        }
+        lancerwaveform(audio);
+    }
+    function toggleMute() {
+        wavesurfer.toggleMute();
+    }
+</script>

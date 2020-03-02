@@ -1,0 +1,69 @@
+﻿@model Preject2netAsp.Models.Users
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+<link href="~/css/register.css" rel="stylesheet" />
+
+<script src="~/js/RegisterJs.js"></script>
+
+
+
+  
+        <form  asp-action="Register">
+            <label>
+                <label for="FirstName"> </label>
+                <p class="label-txt" for="FirstName">Enter your FirstName:</p>
+                <input type="text" name="FirstName" id="FirstName" required class="input">
+                <div class="line-box">
+                    <div class="line"></div>
+                </div>
+            </label>
+            <label>
+                <p class="label-txt" for="LastName">Enter your LastName:</p>
+                <input type="text" name="LastName" id="LastName" required class="input">
+                <div class="line-box">
+                    <div class="line"></div>
+                </div>
+
+            </label>
+
+            <label>
+
+                <p class="label-txt">Enter your Email:</p>
+                <input type="email" name="Email" id="Email" required class="input">
+                <div class="line-box">
+                    <div class="line"></div>
+                </div>
+            </label>
+            <button type="submit">Register</button>
+
+
+    </form>
+
+
+
+
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+{
+    <div class="alert alert-<strong>Error!</strong> danger">
+        @ViewData.ModelState["Error"].Errors.First().ErrorMessage
+    </div>
+}
+<script type="text/javascript">
+        @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+        {
+            <text>
+            $(document).ready(function() {
+                alert('@ViewData.ModelState["Error"].Errors.First().ErrorMessage');
+            });
+            </text>
+        }
+</script>
+
+
+
+
